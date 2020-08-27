@@ -1,0 +1,77 @@
+{%extends 'base.html' %}
+
+
+{%block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    
+  </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+
+</head>
+<body>
+<h1>Update</h1>
+{% if messages %}
+
+{% for message in messages %}
+   <h3 style="color: red;"> {{ message }}</h3>
+    {% endfor %}
+<br/>
+<br/>
+{%endif%}
+
+<form method="POST" action="{% url 'update' %}" >
+
+  {% csrf_token %}
+
+  New Username:<br/>
+  <input value="{{user.get_username}}" style="background-color: grey;width: 40%;" type="text" name="username"/>
+  <br/>
+  New Name:<br/>
+  <input value="{{first_name}}" style="background-color: grey;width: 40%;" type="text" name="first_name"/>
+  <br/>
+  Year of Study:<br>
+<select data-placeholder="select year of study" multiple class="chosen-select" style="width: 40%;" name="last_name">
+  <option selected="{{last_name}}">{{last_name}}</option>
+    <option>First Year</option>
+    <option>Second Year</option>
+    <option>Third Year</option>
+    <option>Fourth Year</option>
+    <option>Other</option>
+
+  </select><br>
+ 
+ Phone No.:<br>
+ <input value="{{phone_num}}" style="background-color: grey;width: 40%;" type="text" name="phone_num">
+ <br>
+ Age:<br>
+ <input value="{{age}}" style="background-color: grey;width: 40%;" type="number" name="age"><br>
+  
+  New Email:<br/>
+  <input value="{{email}}" style="background-color: grey;width: 40%;" type="email" name="email"/>
+  <br/>
+  <br/>
+  <input class="btn btn-primary" type="submit" value="Update"/>
+
+</form>
+</body>
+<script type="text/javascript">
+ 
+$(".chosen-select").chosen({
+  max_selected_options: 1,
+});
+
+</script>
+</html>
+ 
+{%endblock%}

@@ -1,0 +1,132 @@
+{%extends 'base.html' %}
+
+
+{%block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>user</title>
+  <style type="text/css">
+    #block{
+      
+      border:2px outset;
+      border-radius: 30px;
+      background-color: #FADBD8;
+      padding: 2px;
+    }
+  </style>
+</head>
+<body>
+
+{% if messages %}
+
+{% for message in messages %}
+   <h4 style="color: green;"> {{ message }}</h4>
+    {% endfor %}
+<br/>
+<br/>
+{%endif%}
+
+<div>
+  <br>
+ <h5><b >User id: {{user.get_username}}</b></h5>
+
+<h5><b >Name: {{first_name}}</b></h4>
+<h5><b >Year of study: {{last_name}}</b></h5>
+
+<h5><b>Email: {{email}}</b></h5>
+{%for user_extend in user_extend %}
+<h5><b>Age: {{user_extend.age}}</b></h5> 
+<h5><b>Phone No.: {{user_extend.phone_num}}</b></h5>
+<h5><b>Institute: {{user_extend.institute}}</b></h5>
+{%endfor%}
+
+<button onclick="window.location='{%url 'update' %}';" style=" background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;">Update Profile</button>
+
+  <button onclick="window.location='{%url 'liked' %}';" style=" background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;">My Liked Post</button>
+
+  <br>
+  <hr>
+
+  <h3 style="color: green;">My Posts</h3>
+
+  {%for product in user_posts %}
+<br>
+<div style="width: 100%;margin: auto;" id="block" class="row pt-3">
+  <div class="col-8" onclick="window.location='{%url 'detail' product.id %}';" style="cursor: pointer;">
+    <a href="#"  ><h6 style="color: black">{{product.hunter.username}}</h6></a>
+  <a href="https://en.wikipedia.org/wiki/{{product.compname}}" ><h4>{{product.compname}}</h4></a>
+    <p style="color: #7F8C8D;">{{product.summary}}</p>
+         </div>
+
+
+
+
+         <div style="width: 100%;margin: auto;" id="block2" class="row pt-1">
+    <div class="col-3" style="cursor: pointer;">
+<form action="{%url 'like_post'%}" method='POST' class="ui form">
+       {%csrf_token%}
+      <input type="hidden" name="productid" value="{{product.id}}">
+
+      {% if user not in product.liked.all %}
+         <button style="background-color: grey;border-radius: 2px;width: 100%;"><a>Like</a></button>
+      {%else%}
+         <a><button style="background-color: red;border-radius: 2px;width: 100%;">Unlike</button></a>
+
+      {%endif%}
+      
+
+    </form>
+    </div>
+    <div class="col-2" style="color: green;">
+    <b style="width: 20%;">{{product.liked.all.count}} likes</b></div>
+
+  <div class="col-3" style="color: green;">
+    <button style="width: 100%;" onclick="window.location='{%url 'editpost' product.id %}';" >Edit</button></div>
+
+<div class="col-3" style="color: green;">
+  <button  onclick="window.location='{%url 'delete' product.id %}';" style="background-color: rgb(200,0,137);width: 100%;">Deleat</button>
+
+</div>
+    
+
+  </div>
+
+
+
+ 
+
+   
+
+  </div>
+  
+
+{%endfor%}
+
+
+</div>
+
+
+</body>
+</html>
+
+ 
+{%endblock%}

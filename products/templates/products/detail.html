@@ -1,0 +1,85 @@
+{%extends 'base.html' %}
+
+
+{%block content %}
+
+
+{% if messages %}
+
+    {% for message in messages %}
+     <h2 style="color: green;">  {{ message }}</h2>
+    {% endfor %}
+
+{% endif %}
+   
+  
+   <div style="
+      
+   " class="divclass">
+         
+          <h5> <p style="text-align:left;">
+    {{product.hunter.first_name}}
+    <span style="float:right;">
+        {{product.hunter.last_name}}
+    </span>
+</p></h5>
+      
+
+     <h3 style="background-color: #82E0AA;"> {{product.compname}}</h3>
+      
+
+   <h6>{{product.pub_date_preety}}    <b style="">{{product.liked.all.count}} likes</b></h6>
+
+
+      
+      <form action="{%url 'like_post'%}" method='POST' class="ui form">
+       {%csrf_token%}
+      <input type="hidden" name="productid" value="{{product.id}}">
+
+      {% if user not in product.liked.all %}
+         <button style="background-color: grey;border-radius: 2px;width: 20%;">Like</button>
+      {%else%}
+         <button style="background-color: red;border-radius: 2px;width: 20%;">Unlike</button>
+
+      {%endif%}
+      
+
+    </form><br>
+
+    <p style="border: 5px groove grey; margin: 2px; padding: 8px;">{{product.body}}</p>
+
+    <br>
+    
+    
+ </div>
+
+ <div>
+   
+   <h4 style="background-color: brown;">Comments:</h4>
+   {% if user.is_authenticated %}
+   <form method="POST" action="{%url 'detail' product.id %}">
+    {%csrf_token%}
+    <textarea placeholder="add your comment" style="width:100%;height: 100px;" name="message"></textarea>
+    <button type="submit">SUBMIT</button>
+   </form>
+   {%endif%}
+
+   <br>
+   {%for comment in comments%}
+     <div style="border: 2px solid brown; border-radius: 10px;">
+        <b> <p style="text-align:left;">
+    {{comment.user_id}}
+    <span style="float:right;">
+        {{comment.date_preety}}
+    </span>
+       </p></b>
+
+       <p style="margin-left: 5px;margin-right: 5px;">{{comment.message}}</p>
+       
+     </div>
+     <br>
+
+   {%endfor%}
+ </div>
+ 
+{%endblock%}

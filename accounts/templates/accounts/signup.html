@@ -1,0 +1,313 @@
+
+{%extends 'base.html' %}
+
+
+{%block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+
+<style type="text/css">
+  body{
+background-color: #daa520;
+}
+</style>
+  
+</head>
+<body>
+  <br>
+  <div style="text-align:center;border: 30px solid rgb(100,150,100); background-color: gray;">
+<h1 style="color: blue;">SIGN UP</h1>
+{% if error %}
+<h6 style="color: red;">{{error}}</h6>
+<br/>
+<br/>
+{%endif%}
+<div style="align-items: center;">
+<form method="POST" action="{% url 'signup' %}" name="Form" >
+
+  {% csrf_token %}
+
+  Username:<br/>
+  <input style="background-color: coral;width: 40%;" type="text" name="username"/>
+  <br/>
+  Name:<br/>
+  <input style="background-color: coral;width: 40%;" type="text" name="first_name"/>
+  <br/>
+  Email:<br/>
+  <input style="background-color: coral;width: 40%;" type="email" name="email"/>
+  <br/>
+  Current Year of study:
+  <br>
+  <select data-placeholder="select year of study" multiple class="chosen-select" style="width: 40%;" name="last_name">
+    <option>First Year</option>
+    <option>Second Year</option>
+    <option>Third Year</option>
+    <option>Fourth Year</option>
+    <option>Other</option>
+
+  </select><br>
+  
+  Institute Name:<br>
+  <select  data-placeholder="select organisation" multiple class="chosen-select" id="institute" name="institute" style="width: 40%;"  >
+   
+   <option>National Institute of Technology Allahabad</option>
+   <option>National Institute of Technology Bhopal</option>
+   <option>National Institute of Technology Durgapur</option>
+   <option>National Institute of Technology Calicut</option>
+   <option>National Institute of Technology Hamirpur</option>
+   <option>National Institute of Technology Jaipur</option>
+   <option>National Institute of Technology Jalandhar</option>
+   <option>National Institute of Technology Jamshedpur</option>
+   <option>National Institute of Technology Kurukshetra</option>
+   <option>National Institute of Technology Nagpur</option>
+   <option>National Institute of Technology Rourkela</option>
+   <option>National Institute of Technology Silchar</option>
+   <option>National Institute of Technology Karnataka</option>
+   <option>National Institute of Technology Warangal</option>
+   <option>National Institute of Technology Srinagar</option>
+   <option>National Institute of Technology Surat</option>
+   <option>National Institute of Technology Tiruchirappalli</option>
+   <option>National Institute of Technology Patna</option>
+   <option>National Institute of Technology Raipur</option>
+   <option>National Institute of Technology Agartala</option>
+   <option>National Institute of Technology Arunachal Pradesh</option>
+   <option>National Institute of Technology Delhi</option>
+   <option>National Institute of Technology Goa</option>
+   <option>National Institute of Technology Manipur</option>
+   <option>National Institute of Technology Manipur</option>
+   <option>National Institute of Technology Meghalaya</option>
+   <option>National Institute of Technology Mizoram</option>
+   <option>National Institute of Technology Nagaland</option>
+   <option>NIT Puducherry</option>
+   <option>NIT Sikkim</option>
+   <option>NIT Uttarakhand</option>
+   <option>NIT Andhra Pradesh</option>
+   <option>Indian Institute of Technology  Gandhi Nagar</option>
+   <option>Indian Institute of Technology  Bhubaneshwar</option>
+   <option>Indian Institute of Technology  Madras</option>
+   <option>Indian Institute of Technology  Guwahati</option>
+   <option>Indian Institute of Technology  Indore</option>
+   <option>Indian Institute of Technology  Kanpur</option>
+   <option>Indian Institute of Technology  Jodhpur</option>
+   <option>Indian Institute of Technology  Kharagpur </option>
+   <option>Indian Institute of Technology  Hyderabad</option>
+   <option>Indian Institute of Technology  Mumbai</option>
+   <option>Indian Institute of Technology  Patna</option>
+   <option>Indian Institute of Technology  Delhi</option>
+   <option>Indian Institute of Technology  Ropar</option>
+   <option>Indian Institute of Technology  Mandi</option>
+   <option>Indian Institute of Technology  Roorkee</option>
+   <option>Indian Institute of Technology  Varanasi</option>
+   <option>Indian Institute of Technology  Jammu</option>
+   <option>Indian Institute of Technology  Palakkad</option>
+   <option>Indian Institute of Technology  Tirupati</option>
+   <option>Indian Institute of Technology  Goa</option>
+   <option>Indian Institute of Technology  Bhilai</option>
+   <option>Indian Institute of Technology  Dharwad</option>
+   <option>Indian Institute of Technology  Dhanbad</option>
+   <option>Atal Bihari Vajpayee Indian Institute of Information Technology and Management, Gwalior</option>
+   <option>Indian Institute of Information Technology, Allahabad</option>
+   <option>Indian Institute of Information Technology, Design and Manufacturing, Jabalpur</option>
+   <option>Indian Institute of Information Technology, Design and Manufacturing, Kancheepuram</option>
+   <option>Indian Institute of Information Technology, Sri City</option>
+   <option>Indian Institute of Information Technology, Guwahati</option>
+   <option>Indian Institute of Information Technology, Vadodara</option>
+   <option>Indian Institute of Information Technology, Kota </option>
+   <option>Indian Institute of Information Technology Tiruchirappalli</option>
+   <option>Indian Institute of Information Technology Una</option>
+   <option>Indian Institute of Information Technology, Sonepat</option>
+   <option>Indian Institute of Information Technology, Kalyani</option>
+   <option>Indian Institute of Information Technology, Lucknow</option>
+   <option>Indian Institute of Information Technology, Dharwad</option>
+   <option>Indian Institute of Information Technology Design and Manufacturing, Kurnool</option>
+    <option>Indian Institute of Information Technology, Kottayam</option>
+   <option>Indian Institute of Information Technology, Manipur</option>
+   <option>Indian Institute of Information Technology, Nagpur</option>
+   <option>Indian Institute of Information Technology, Pune</option>
+   <option>Indian Institute of Information Technology, Ranchi</option>
+   <option>Indian Institute of Information Technology, Surat</option>
+   <option>Indian Institute of Information Technology, Bhopal</option>
+   <option>Indian Institute of Information Technology, Bhagalpur</option>
+   <option>Indian Institutes of Information Technology Raichur</option>
+   <option>Indian Institute of Information Technology, Agartala </option>
+   <option>Anna University</option>
+   <option>Jadavpur University</option>
+   <option>Vellore Institute of Technology</option>
+   <option>Institute of Chemical Technology</option>
+   <option>Birla Institute of Technology & Science -Pilani</option>
+   <option>Indian Institute of Engineering Science And Technology, Shibpur</option>
+   <option>Jamia Millia Islamia</option>
+   <option>Indian Institute of Technology (Indian School of Mines)</option>
+    <option>College of Engineering, Pune</option>
+   <option>Shanmugha Arts Science Technology & Research Academy (SASTRA)</option>
+   <option>SRM University, Haryana</option>
+   <option>Sri Sivasubrmaniya Nadar College of Engineering</option>
+   <option>Birla Institute of Technology</option>
+   <option>PSG College of Technology</option>
+   <option>R.M Institute of Science and Technology</option>
+   <option>Thiagarajar College of Engineering</option>
+   <option>Pondicherry Engineering College</option>
+   <option>Delhi Technological University</option>
+   <option>Zakir Husain College of Engineering & Technology</option>
+
+   <option>Visvesvaraya National Institute of Technology, Nagpur (Deemed University)</option>
+   <option>Manipal Institute of Technology</option>
+   <option>S. Ramaiah Institute of Technology</option>
+   <option>AMITY University</option> 
+   <option>Kalinga Institute of Industrial Technology</option>
+   <option>Sri Venkateswara University</option>
+   <option>V. College of Engineering</option> 
+   <option>Sardar Vallabhbhai National Institute of Technology</option>
+   <option>Coimbatore Institute of Technology</option>
+   <option>M.S. College of Engineering</option>
+   <option>Jaypee Institute of Information Technology</option> 
+   <option>Kongu Engineering College</option>
+   <option>Vel Tech Rangarajan Dr.Sagunthala R&D Institute of Science and Technology</option> 
+   <option>Maulana Azad National Institute of Technology</option>
+   <option>Karunya Institute of Technology and Sciences-Coimbatore</option>  
+   <option>Jawaharlal Nehru Technological University</option> 
+    <option>Shri Ramdeobaba College of Engineering and Management</option>
+   
+   <option>Bharati Vidyapeeth Deemed University College of Engineering</option>
+   <option>Koneru Lakshmaiah Education Foundation University (K L College of Engineering)</option>
+   <option>Pandit Dwarka Prasad Mishra Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur</option>
+   <option>Malaviya National Institute of Technology, Jaipur</option>
+   <option>Dhirubhai Ambani Institute of Information and Communication Technology</option>
+   <option>Siddaganga Institute of Technology</option>
+   <option>Mepco Schlenk Engineering College</option>
+   <option>International Institute of Information Technology</option>
+   <option>Army Institute of Technology</option>
+   <option>Nirma University</option>
+   <option>Sagi Ramakrishnam Raju Engineering College</option>
+   <option>Jaypee University of Information Technology-Solan</option>
+   <option>M.K. Engineering College</option>
+   <option>PES University</option>
+   
+   <option>Vignan’s Foundation for Science, Technology and Research</option>
+   <option>S. Abdur Rahman Institute of Science and Technology</option>
+   <option>Chaitanya Bharathi Institute of Technology</option>
+   <option>V. Raman College of Engineering</option>
+   <option>College of Engineering Trivandrum</option>
+   <option>BMS Institute of Technology & Management</option>
+   <option>Sri Sai Ram Engineering College</option>
+   <option>Joseph’s College of Engineering</option>
+   <option>Andhra University</option>
+   <option>S.Rangasamy College of Technology</option>
+   <option>Massachusetts Institute of Technology</option>
+   <option>Stanford University</option>
+   <option>University of California--Berkeley</option>
+   <option>California Institute of Technology</option>
+   <option>Carnegie Mellon University</option>
+   <option>University of Michigan--Ann Arbor</option>
+   <option>Purdue University--West Lafayette</option>
+   <option>Georgia Institute of Technology</option>
+   <option>University of California--San Diego (Jacobs)</option>
+   <option>University of Illinois--Urbana-Champaign</option>
+   <option>University of Southern California (Viterbi)</option>
+   <option>University of Texas--Austin (Cockrell)</option>
+   <option>Texas A&M University--College Station</option>
+   <option>Columbia University (Fu Foundation)</option>
+   <option>Cornell University</option>
+   <option>University of California--Los Angeles (Samueli)</option>
+   <option>Johns Hopkins University (Whiting)</option>
+   <option>University of Pennsylvania</option>
+   <option>Northwestern University (McCormick)</option>
+   <option>University of Maryland--College Park (Clark)</option>
+   <option>Princeton University</option>
+   <option>Harvard University</option>
+   <option>Duke University (Pratt)</option>
+   <option>North Carolina State University</option>
+   <option>University of Washington</option>
+   <option>University of Wisconsin--Madison</option>
+   <option>University of California--Santa Barbara</option>
+   <option>University of Colorado--Boulder</option>
+   <option>Virginia Tech</option>
+   <option>Ohio State University</option>
+   <option>Northeastern University</option>
+   <option>University of Minnesota--Twin Cities</option>
+   <option>Rice University (Brown)</option>
+   <option>University of California--Davis</option>
+   <option>Pennsylvania State University--University Park</option>
+   <option>Boston University</option>
+   <option>University of California--Irvine (Samueli)</option>
+   <option>New York University (Tandon)</option>
+   <option>Vanderbilt University</option>
+   <option>Yale University</option>
+   <option>Arizona State University (Fulton)</option>
+   <option>University of Virginia</option>
+   <option>Iowa State University</option>
+   <option>Rensselaer Polytechnic Institute</option>
+   <option>University of Rochester (Hajim)</option>
+   <option>University of Dayton</option>
+   <option>University of Delaware</option>
+   <option>University of Florida</option>
+   <option>Washington University in St. Louis</option>
+   <option>University of Notre Dame</option>
+   <option>Brown University</option>
+   <option>Case Western Reserve University</option>
+
+
+
+  
+ </select><br>
+ Phone NO.:<br>
+ <input style="background-color: coral;width: 40%;" type="text" name="phone_num">
+ <br>
+ Age:<br>
+ <input style="background-color: coral;width: 40%;" type="number" name="age"><br>
+  Password:<br/>
+  <input style="background-color: coral;width: 40%;" type="password" name="password1"/>
+  <br/>
+  Confirm Password:<br/>
+  <input style="background-color: coral;width: 40%;" type="password" name="password2"/>
+  <br/>
+  <br/>
+  <input class="btn btn-primary" type="submit" value="Sign Up!"/>
+
+</form>
+<br>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+  function validateForm() {
+    var a = document.forms["Form"]["first_name"].value;
+    var b = document.forms["Form"]["email"].value;
+    var c = document.forms["Form"]["last_name"].value;
+    var d = document.forms["Form"]["institute"].value;
+    var e = document.forms["Form"]["phone_num"].value;
+    var f = document.forms["Form"]["age"].value;
+
+
+    if (a == null || a == "", b == null || b == "", c == null || c == "", d == null || d == "",e==""||e==null,f==""||f==null) {
+      alert("Please Fill All Required Field");
+      return false;
+    }
+  }
+</script>
+
+<script type="text/javascript">
+ 
+$(".chosen-select").chosen({
+  max_selected_options: 1,
+});
+
+</script>
+</html>
+
+
+
+{%endblock%}

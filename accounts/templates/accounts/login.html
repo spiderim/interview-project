@@ -1,0 +1,55 @@
+
+{%extends 'base.html' %}
+
+
+{%block content %}
+
+
+<html>
+<head>
+	<title>
+		login
+	</title>
+<style type="text/css">
+  body{
+background-color: #daa520;
+}
+</style>
+  
+</head>
+<body>
+
+{% if error %}
+<h6 style="color: red;">{{error}}</h6>
+<br/>
+<br/>
+{%endif%}
+<br>
+<br>
+<div style="text-align:center;border: 30px solid rgb(100,150,100); background-color: grey;">
+  <h1>Login</h1><br>
+<form method="POST" action="{% url 'login' %}" >
+
+  {% csrf_token %}
+
+  <h5 style="color: blue;">Username:</h5>
+  <input style="background-color: coral; width: 40%;" type="text" name="username"/>
+  <br/>
+  <h5 style="color: blue;">Password:</h5>
+  <input style="background-color: coral;width: 40%;" type="password" name="password"/>
+  <br/>
+  <br/>
+  <input class="btn btn-primary" type="submit" value="Login!"/>
+
+</form>
+<br>
+<a style="color: red;" href="reset_password">Forget password? Click Here !</a>
+<br>
+<br>
+</div>
+</body>
+</html>
+
+
+
+{%endblock%}

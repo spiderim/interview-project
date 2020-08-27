@@ -1,0 +1,218 @@
+{%extends 'base.html' %}
+
+
+{%block content %}
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+
+</head>
+<body>
+
+{% if error %}
+<h3 style="color: red">{{error}}</h3>
+<br/>
+<br/>
+{%endif%}
+<h1 style=" color: rgb(0,100,0);width: 20%">ADD</h1>
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" >
+
+  {% csrf_token %}
+<br><br>
+ <h5 style="color: rgb(0,100,0)"> Company Name:</h5>
+ <!-- <input type="text" id="compnyname" name="compname"/>-->
+ <select  data-placeholder="select organisation" multiple class="chosen-select" id="compnyname" name="compname"  >
+   
+   <option>Amazon</option>
+   <option>Microsoft</option>
+   <option>Adobe</option>
+   <option>Samsung</option>
+   <option>Accolite</option>
+   <option>Paytm</option>
+   <option>Goldman Sachs</option>
+   <option>Zoho</option>
+   <option>MakeMyTrip</option>
+   <option>Google</option>
+   <option>Snapdeal</option>
+   <option>Flipkart</option>
+   <option>Morgan Stanley</option>
+   <option>Walmart</option>
+   <option>OYO Rooms</option>
+   <option>FactSet</option>
+   <option>D-E-Shaw</option>
+   <option>Hike</option>
+   <option>Ola Cabs</option>
+   <option>Oracle</option>
+   <option>SAP Labs</option>
+   <option>MAQ Software</option>
+   <option>Directi</option>
+   <option>VMWare</option>
+   <option>Facebook</option>
+   <option>Visa</option>
+   <option>Cisco</option>
+   <option>Linkedin</option>
+   <option>Intuit</option>
+   <option>Qualcomm</option>
+   <option>Wipro</option>
+   <option>Payu</option>
+   <option>Yahoo</option>
+   <option>BankBazaar</option>
+   <option>TCS</option>
+   <option>Housing.com</option>
+   <option>Yatra.com</option>
+   <option>Salesforce</option>
+   <option>Codenation</option>
+   <option>Citrix</option>
+   <option>PayPal</option>
+   <option>Rockstand</option>
+   <option>Twitter</option>
+   <option>Synopsys</option>
+   <option>Moonfrog Labs</option>
+   <option>Accenture</option>
+   <option>Teradata</option>
+   <option>InfoEdge</option>
+   <option>Infosys</option>
+   <option>Times Internet</option>
+   <option>24*7 Innovation Labs</option>
+   <option>Myntra</option>
+   <option>Nagarro</option>
+   <option>ABCO</option>
+   <option>Drishti-Soft</option>
+   <option>InMobi</option>
+   <option>Streamoid Technologies</option>
+   <option>Opera</option>
+   <option>Quikr</option>
+   <option>Boomerang Commerce</option>
+   <option>Juniper Networks</option>
+   <option>GE</option>
+   <option>CarWale</option>
+   <option>Expedia</option>
+   <option>Apple</option>
+   <option>Nutanix</option>
+   <option>OATS Systems</option>
+   <option>GreyOrange</option>
+   <option>Zillious</option>
+   <option>Zillious</option>
+    <option>Grofers</option>
+   <option>Oxigen Wallet</option>
+   <option>Epic Systems</option>
+   <option>CouponDunia</option>
+   <option>BrowserStack</option>
+   <option>One97</option>
+   <option>Kritikal Solutions</option>
+   <option>Brocade</option>
+   <option>Philips</option>
+   <option>Service Now</option>
+   <option>Amdocs</option>
+   <option>Sapient</option>
+   <option>Jabong</option>
+   <option>Veritas</option>
+   <option>nearbuy</option>
+   <option>Tejas Network</option>
+   <option>Groupon</option>
+   <option>Mobicip</option>
+    <option>Cognizant</option>
+   <option>IBM</option>
+   <option>United Health Group</option>
+   <option>MetLife</option>
+   <option>Pubmatic</option>
+   <option>Junglee Games</option>
+   <option>Kuliza</option>
+   <option>Fab.com</option>
+   <option>Swiggy</option>
+   <option>Nvidia</option>
+   <option>Netskope</option>
+
+   <option>Intel</option>
+   <option>Bloomberg  </option>
+   <option>TinyOwl  </option>
+   <option>Yodlee Infotech </option> 
+   <option>HSBC  </option>
+   <option>PropTiger  </option>
+   <option>Taxi4Sure </option> 
+   <option>Airtel  </option>
+   <option>redBus  </option>
+   <option>National Instruments  </option>
+   <option>Bidgely </option> 
+   <option>Wooker  </option>
+   <option>Monotype Solutions </option> 
+   <option>Informatica  </option>
+   <option>Vizury Interactive Solutions</option>  
+   <option>Zycus </option> 
+   <option>Tesco </option> 
+   <option>IgniteWorld </option> 
+   <option>Medlife </option> 
+   <option>Target Corporation</option>  
+   <option>Citicorp </option> 
+   <option>Xome  </option>
+   <option>Unisys </option> 
+   <option>Polycom  </option>
+   <option>Arcesium  </option>
+   <option>Mahindra Comviva  </option>
+   <option>Dell </option> 
+   <option>Cadence India</option>  
+   <option>Komli Media </option> 
+   <option>PlaySimple</option>  
+   <option>Dailyhunt </option> 
+   <option>CGI  </option>
+   <option>FreeCharge </option> 
+   <option>Knowlarity  </option>
+   <option>American Express </option> 
+   <option>Code Brew  </option>
+   <option>Mallow Technologies </option> 
+   <option>Aricent  </option>
+   <option>Zomato  </option>
+   <option>Freshokartz </option> 
+   <option>Sprinklr  </option>
+   <option>Thoughtworks </option> 
+   <option>Lybrate  </option>
+   <option>Huawei  </option>
+   <option>Open Solutions</option>  
+   <option>KLA Tencor</option>  
+   <option>Practo</option>  
+   <option>HCL  </option>
+   <option>MindFire Solutions  </option>
+   <option>HunanAsset </option> 
+   <option>Motlay </option> 
+   <option>Infinera </option> 
+   <option>Rivigo </option> 
+   <option>eBay  </option>
+   <option>Zopper </option> 
+   <option>Cavisson System </option> 
+    <option>Amadeus Labs</option>
+
+  
+ </select>
+  
+  <br/>
+  <br/>
+  Body:<br/>
+  <textarea type="textbox" style="background-color:#C0C0C0; width: 100%;height: 300px;"  name="body"></textarea>
+  <br/>
+  <br/>
+  <br/>
+  <input class="btn btn-primary" type="submit" value="ADD PRODUCT"/>
+
+</form>
+
+</body>
+
+<script type="text/javascript">
+ 
+$(".chosen-select").chosen({
+  max_selected_options: 1,
+});
+
+</script>
+
+
+</html>
+
+{%endblock%}

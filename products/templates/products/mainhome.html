@@ -1,0 +1,83 @@
+{%extends 'base.html' %}
+
+
+{%block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title style="color: blue;">HOME</title>
+  <style type="text/css">
+    #block{
+      
+      border:2px outset;
+      border-radius: 30px;
+      background-color: #FADBD8;
+      padding: 2px;
+    }
+  
+  </style>
+</head>
+<body>
+
+  {% if messages %}
+
+{% for message in messages %}
+   <h4 style="color: green;"> {{ message }}</h4>
+    {% endfor %}
+<br/>
+<br/>
+{%endif%}
+
+<br>
+<h4><b style="color: blue;">{{institute}}</b></h4>
+
+{%for product in qs %}
+<br>
+<div style="width: 100%;margin: auto;" id="block" class="row pt-3">
+  <div class="col-12" onclick="window.location='{%url 'detail' product.id %}';" style="cursor: pointer;">
+   <b> <p style="text-align:left;">
+    {{product.hunter.first_name}}
+    <span style="float:right;">
+        {{product.hunter.last_name}}
+    </span>
+</p></b>
+  <h5><a href="https://en.wikipedia.org/wiki/{{product.compname}}">{{product.compname}}</a></h5>
+    <p style="color: #7F8C8D;">{{product.summary}}</p>
+    </div>
+    
+  </div>
+
+
+  <div style="width: 100%;margin: auto;" id="block2" class="row pt-1">
+    <div class="col-4" style="cursor: pointer;">
+<form action="{%url 'like_post'%}" method='POST' class="ui form">
+       {%csrf_token%}
+      <input type="hidden" name="productid" value="{{product.id}}">
+
+      {% if user not in product.liked.all %}
+         <button style="background-color: grey;border-radius: 2px;width: 80%;">Like</button>
+      {%else%}
+         <button style="background-color: red;border-radius: 2px;width: 80%;">Unlike</button>
+
+      {%endif%}
+      
+
+    </form>
+    </div>
+
+  <div class="col-4" style="color: green;">
+    <b>{{product.liked.all.count}} likes</b></div>
+
+    <div class="col-4" style="color: green;">
+   
+
+    
+
+  </div>
+
+{%endfor%}
+
+</body>
+</html>
+
+{%endblock%}
